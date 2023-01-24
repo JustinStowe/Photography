@@ -9,7 +9,7 @@ class DefaultLayout extends React.Component {
       <html>
         <head>
           <title>{this.props.title}</title>
-          <link rel="stylesheet" href={"/css/app.css"} />
+          <script src="https://cdn.tailwindcss.com"></script>
         </head>
         <body>
           <h1>{this.props.title}</h1>
