@@ -17,6 +17,7 @@ class Edit extends React.Component {
         >
           Name: <input type="text" name="name" defaultValue={name} />
           <br />
+          <label For="image">Select a new image to upload</label>
           Image: <input type="file" name="image" defaultValue={image} />
           <br />
           Date: <input type="datetime-local" name="date" defaultValue={date} />
