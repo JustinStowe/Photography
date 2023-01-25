@@ -43,7 +43,7 @@ app.engine("jsx", require("jsx-view-engine").createEngine());
 app.use("/user", userController);
 // We are just going to redirect to /home if the user goes to our base route
 app.get("/", (req, res) => {
-  res.redirect("/home/");
+  res.redirect("/signup/");
 });
 
 // Listen on the port
