@@ -4,35 +4,33 @@ const React = require("react");
 const Layout = require("../components/DefaultLayout");
 class Index extends React.Component {
   render() {
-    const { Photograph } = this.props;
+    const { Photo } = this.props;
     return (
       <Layout>
         <div>
           <div className="flex justify-center">
-            <h1 className="font-sans text-3xl mb-5 ">
-              photography portfolio Page
-            </h1>
+            <h1 className="font-sans text-3xl mb-5 ">Picture portfolio Page</h1>
           </div>
           <div className="flex justify-center overflow-auto ... overscroll-contain max-h-96 border-solid border-8 border-blue-700">
             <ul>
-              {Photograph.map((Photograph, i) => {
+              {Photo.map((Photo, i) => {
                 return (
                   <li key={i}>
-                    <strong>Photograph: </strong> {Photograph.image}
+                    <strong>Photo: </strong> {Photo.image}
                     <br />
-                    <strong>Photograph:</strong>{" "}
+                    <strong>Photo:</strong>{" "}
                     <a
                       className="text-sky-700 #1d4ed8bg-sky-500 hover:bg-sky-500 ..."
-                      href={`/home/${Photograph}.id}`}
+                      href={`/home/${Photo}.id}`}
                     >
                       {" "}
-                      {Photograph.name}{" "}
+                      {Photo.name}{" "}
                     </a>{" "}
                     <br />
-                    <strong>Photograph Date: </strong> {Photograph.date}
+                    <strong>Photo Date: </strong> {Photo.date}
                     <br />
                     <form
-                      action={`/home/${Photograph._id}?_method=DELETE`}
+                      action={`/home/${Photo._id}?_method=DELETE`}
                       method="POST"
                     >
                       <input
@@ -41,7 +39,7 @@ class Index extends React.Component {
                         value="DELETE"
                       />
                     </form>
-                    <form action={`/home/${Photograph._id}/edit`} method="GET">
+                    <form action={`/home/${Photo._id}/edit`} method="GET">
                       <input
                         className="text-green-500 #1d4ed8bg-sky-500 hover:bg-green-300 ..."
                         type="submit"
@@ -57,9 +55,9 @@ class Index extends React.Component {
             <nav>
               <a
                 className="font-sans text-3xl text-green-400  #1d4ed8bg-sky-500 hover:bg-indigo-700 ... underline"
-                href="/Photographs/New"
+                href="/Photos/New"
               >
-                Upload photo
+                Upload new photo
               </a>
             </nav>
           </div>

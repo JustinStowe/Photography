@@ -14,9 +14,10 @@ const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 /**
- * Controllers
+ * Define Controllers
  */
 const userController = require("./controllers/user/userController");
+const router = require("./controllers/router");
 
 //connect to database
 const db = require("./db");
@@ -28,6 +29,7 @@ db.once("open", () => {
  * Middleware
  */
 const setupMiddleware = require("./middleware/setupMiddleware");
+const { route } = require("./controllers/user/userController");
 
 setupMiddleware(app);
 
@@ -38,12 +40,13 @@ app.set("view engine", "jsx");
 app.engine("jsx", require("jsx-view-engine").createEngine());
 
 /**
- * Controllers
+ * Use Controllers
  */
 app.use("/user", userController);
+app.use("/home", router);
 // We are just going to redirect to /home if the user goes to our base route
 app.get("/", (req, res) => {
-  res.redirect("/signup/");
+  res.redirect("/home/");
 });
 
 // Listen on the port

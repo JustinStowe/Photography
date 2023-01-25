@@ -5,12 +5,16 @@ const Layout = require("../components/DefaultLayout");
 
 class Edit extends React.Component {
   render() {
-    const { name, image, date, _id } = this.props.vampire;
+    const { name, image, date, _id } = this.props.photo;
 
     return (
       <Layout>
         <h1>{title} Edit Page</h1>
-        <form action={`/home/${_id}?_method=PUT`} method="POST">
+        <form
+          action={`/home/${_id}?_method=PUT`}
+          method="POST"
+          encType="multipart/form-data"
+        >
           Name: <input type="text" name="name" defaultValue={name} />
           <br />
           Image: <input type="file" name="image" defaultValue={image} />

@@ -19,7 +19,7 @@ router.use((req, res, next) => {
 });
 
 /**
- * Fruits - Api routes
+ * Photo - Api routes
  */
 
 // Index - Api
@@ -38,7 +38,7 @@ router.put("/api/:id", dataController.update, apiController.show);
 router.post("/api/", dataController.create, apiController.show);
 
 /**
- * Fruits
+ * Photos
  */
 
 // Index
