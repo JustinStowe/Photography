@@ -1,12 +1,13 @@
 /** @format */
 const mongoose = require("mongoose");
 
-const PhotoSchema = new mongoose.Schema({
+const PhotographSchema = new mongoose.Schema({
   name: { type: String, required: true },
   date: { type: Date, required: false },
   image: { type: mongoose.Schema.Types.Buffer, required: true },
+  contentType: { type: String, required: true },
 });
 
-const Photograph = mongoose.model("Photograph", PhotoSchema);
+const Photograph = mongoose.model("Photograph", PhotographSchema);
 
-module.exports = Photo;
+module.exports = Photograph;

@@ -1,5 +1,6 @@
 /** @format */
 
+const multer = require("multer");
 const Photo = require("../../models/Photo");
 
 const dataController = {
@@ -17,6 +18,17 @@ const dataController = {
   },
   create(req, res, next) {
     req.body.username = req.session.username;
+    // Use Multer to handle file upload and add the filename and path to the request body
+    const upload = multer({ dest: " ./public/uploads/" }).single("photo");
+    upload(req, res, (err) => {
+      if (err) {
+        res.status(404).send({
+          msg: err.message,
+        });
+      } else {
+        req.body.photo = req.file.filename;
+      }
+    });
     // Use Model to create Photo Document
     Photo.create(req.body, (error, createdPhoto) => {
       // Once created - respond to client
@@ -35,6 +47,9 @@ const dataController = {
       if (error) {
         res.status(404).send("Photo not found");
       } else {
+        const img = fs.readFileSync(`./public/uploads/${foundPhoto.Photo}`);
+        res.writeHead(200, { "Content-Type": "image/jpg" });
+        res.end(img, "binary");
         res.locals.data.photo = foundPhoto;
         next();
       }

@@ -1,14 +1,23 @@
 /** @format */
-
+const express = require("express");
 const sharp = require("sharp");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
+const router = express.Router();
+
 // Index
-router.get("/home", dataController.index, viewController.index);
+router.get("/home", (req, res) => {
+  Photo.find({}, (err, images) => {
+    if (err) res.send(err);
+    res.render("portfolio/index", { images });
+  });
+});
 
 // New
-router.get("/new", viewController.newView);
+router.get("/home/new", (req, res) => {
+  res.render("portfolio/new");
+});
 
 // Delete
 router.delete("/:id", dataController.destroy, viewController.redirectHome);

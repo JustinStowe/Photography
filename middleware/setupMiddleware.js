@@ -8,7 +8,6 @@ const express = require("express");
 
 const setupMiddleware = (app) => {
   app.use(morgan("tiny")); //logging
-  app.use(express.static("public")); //tells express to try to match requests with files in the directory called 'public'
 
   //...
   //after app has been defined
