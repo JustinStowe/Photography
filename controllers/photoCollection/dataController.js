@@ -1,7 +1,10 @@
 /** @format */
 
 const Photo = require("../../models/photo");
-const upload = require("../../middleware/uploadEngine");
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+// const upload = require("../../middleware/uploadEngine");
 
 const dataController = {
   index(req, res, next) {
@@ -17,29 +20,23 @@ const dataController = {
     });
   },
   create(req, res, next) {
-    upload.single("image")(req, res, (error) => {
-      if (error) {
-        res.status(404).send({
-          msg: error.msg,
-        });
-      } else {
-        req.body.username = req.session.username;
-        req.body.image = req.file.path;
-        req.body.contentType = req.file.mimetype;
-        req.body.name = req.file.originalname;
+    upload.single("image")(req, res, (err) => {
+      if (err) {
+        return res.status(404).json({ msg: err.message });
       }
-    });
-    // Use Model to create Photo Document
-    Photo.create(req.body, (error, createdPhoto) => {
-      // Once created - respond to client
-      if (error) {
-        res.status(404).send({
-          msg: error.message,
-        });
-      } else {
+      req.body.name = req.file.originalname;
+      req.body.image = req.file.buffer;
+      req.body.contentType = req.file.mimetype;
+
+      // Use Model to create Photo Document
+      Photo.create(req.body, (error, createdPhoto) => {
+        // Once created - respond to client
+        if (error) {
+          return res.status(404).json({ msg: error.message });
+        }
         res.locals.data.photo = createdPhoto;
         next();
-      }
+      });
     });
   },
   show(req, res, next) {
