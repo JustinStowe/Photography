@@ -8,13 +8,13 @@ class New extends React.Component {
     return (
       <DefaultLayout title="Upload a new photo page">
         {/* NOTE: action will be the route, method will be the HTTP verb */}
-        <form action="/upload" method="POST" encType="multipart/form-data">
+        <form action="/home" method="POST" encType="multipart/form-data">
           {/* the enctype attribute is set to multipart/form-data, which is necessary for file uploads. */}
           Name: <input type="text" name="name" />
           <br />
           Date: <input type="Date" name="date" />
           <br />
-          <label for="image">Select an image to upload:</label>
+          <label htmlFor="image">Select an image to upload:</label>
           <input type="file" id="image" name="image" />
           <br />
           <input type="submit" name="" value="Upload Image" />

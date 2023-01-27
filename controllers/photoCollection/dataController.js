@@ -1,7 +1,7 @@
 /** @format */
 
-const multer = require("multer");
-const Photo = require("../../models/Photo");
+const Photo = require("../../models/photo");
+const upload = require("../../middleware/uploadEngine");
 
 const dataController = {
   index(req, res, next) {
@@ -17,16 +17,16 @@ const dataController = {
     });
   },
   create(req, res, next) {
-    req.body.username = req.session.username;
-    // Use Multer to handle file upload and add the filename and path to the request body
-    const upload = multer({ dest: " ./public/uploads/" }).single("photo");
-    upload(req, res, (err) => {
-      if (err) {
+    upload.single("image")(req, res, (error) => {
+      if (error) {
         res.status(404).send({
-          msg: err.message,
+          msg: error.msg,
         });
       } else {
-        req.body.photo = req.file.filename;
+        req.body.username = req.session.username;
+        req.body.image = req.file.path;
+        req.body.contentType = req.file.mimetype;
+        req.body.name = req.file.originalname;
       }
     });
     // Use Model to create Photo Document
@@ -45,11 +45,10 @@ const dataController = {
   show(req, res, next) {
     Photo.findById(req.params.id, (error, foundPhoto) => {
       if (error) {
-        res.status(404).send("Photo not found");
+        res.status(404).send({
+          msg: error.message,
+        });
       } else {
-        const img = fs.readFileSync(`./public/uploads/${foundPhoto.Photo}`);
-        res.writeHead(200, { "Content-Type": "image/jpg" });
-        res.end(img, "binary");
         res.locals.data.photo = foundPhoto;
         next();
       }

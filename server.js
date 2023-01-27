@@ -16,7 +16,7 @@ const PORT = process.env.PORT ?? 3000;
 /**
  * Define Controllers
  */
-const router = require("./controllers/router");
+const router = require("./controllers/photoCollection/router");
 const userController = require("./controllers/user/userController");
 
 //connect to database
