@@ -12,7 +12,7 @@ class New extends React.Component {
           {/* the enctype attribute is set to multipart/form-data, which is necessary for file uploads. */}
           Name: <input type="text" name="name" />
           <br />
-          Date: <input type="Date" name="date" />
+          Date: <input type="text" name="date" />
           <br />
           <label htmlFor="image">Select an image to upload:</label>
           <input type="file" id="image" name="image" />

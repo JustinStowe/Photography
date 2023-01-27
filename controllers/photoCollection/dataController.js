@@ -5,10 +5,10 @@ const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 // const upload = require("../../middleware/uploadEngine");
-
+// { username: req.session.username },
 const dataController = {
   index(req, res, next) {
-    Photo.find({ username: req.session.username }, (error, allPhotos) => {
+    Photo.find((error, allPhotos) => {
       if (error) {
         res.status(404).send({
           msg: error.message,
@@ -24,7 +24,7 @@ const dataController = {
       if (err) {
         return res.status(404).json({ msg: err.message });
       }
-      req.body.name = req.file.originalname;
+      req.body.name = req.body.name;
       req.body.image = req.file.buffer;
       req.body.contentType = req.file.mimetype;
 
@@ -46,15 +46,27 @@ const dataController = {
           msg: error.message,
         });
       } else {
+        console.log(foundPhoto.name, foundPhoto.date);
         res.locals.data.photo = foundPhoto;
         next();
       }
     });
   },
   update(req, res, next) {
+    const updatedPhoto = {};
+    if (req.body.name) {
+      updatedPhoto.name = req.body.name;
+    }
+    if (req.body.date) {
+      updatedPhoto.date = req.body.date;
+    }
+    if (req.file) {
+      updatedPhoto.image = req.file.buffer;
+      updatedPhoto.contentType = req.file.mimetype;
+    }
     Photo.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      updatedPhoto,
       { new: true },
       (error, updatedPhoto) => {
         if (error) {
@@ -68,6 +80,7 @@ const dataController = {
       }
     );
   },
+
   destroy(req, res, next) {
     Photo.findByIdAndRemove(req.params.id, (error, photo) => {
       if (error) {

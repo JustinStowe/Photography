@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const PhotoSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  date: { type: Date, required: false },
+  date: { type: String, required: false },
   image: { type: Buffer, required: true },
   contentType: { type: String, required: true },
 });
