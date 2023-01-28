@@ -2,9 +2,9 @@
 
 const Photo = require("../../models/photo");
 const multer = require("multer");
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
-// const upload = require("../../middleware/uploadEngine");
+// const storage = multer.memoryStorage();
+// const upload = multer({ storage: storage });
+const upload = require("../../middleware/uploadEngine");
 // { username: req.session.username },
 const dataController = {
   index(req, res, next) {
@@ -46,7 +46,6 @@ const dataController = {
           msg: error.message,
         });
       } else {
-        console.log(foundPhoto.name, foundPhoto.date);
         res.locals.data.photo = foundPhoto;
         next();
       }
