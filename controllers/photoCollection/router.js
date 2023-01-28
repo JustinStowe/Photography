@@ -6,16 +6,17 @@ const router = express.Router();
 const dataController = require("./dataController");
 const viewController = require("./viewController");
 // const apiController = require("./apiController");
+const upload = require("../../middleware/uploadEngine");
+const checkAuth = require("../../middleware/checkAuth");
+// router.use((req, res, next) => {
+//   console.log("session", req.session);
 
-router.use((req, res, next) => {
-  console.log("session", req.session);
-
-  if (req.session.loggedIn) {
-    next();
-  } else {
-    res.redirect("/user/login");
-  }
-});
+//   if (req.session.loggedIn) {
+//     next();
+//   } else {
+//     res.redirect("/user/login");
+//   }
+// });
 
 /**
  * Photo - Api routes
@@ -45,18 +46,29 @@ router.post("/api/", dataController.create, apiController.show);
 router.get("/", dataController.index, viewController.index);
 
 // New
-router.get("/new", viewController.newView);
+router.get("/new", checkAuth, viewController.newView);
 
 // Delete
-router.delete("/:id", dataController.destroy, viewController.redirectHome);
+router.delete(
+  "/:id",
+  checkAuth,
+  dataController.destroy,
+  viewController.redirectHome
+);
 
 // Update
-router.put("/:id", dataController.update, viewController.redirectShow);
+router.put(
+  "/:id",
+  checkAuth,
+  upload.single("image"),
+  dataController.update,
+  viewController.redirectShow
+);
 
 // Create
-router.post("/", dataController.create, viewController.redirectHome);
+router.post("/", checkAuth, dataController.create, viewController.redirectHome);
 // Edit
-router.get("/:id/edit", dataController.show, viewController.edit);
+router.get("/:id/edit", checkAuth, dataController.show, viewController.edit);
 
 // Show - Route
 router.get("/:id", dataController.show, viewController.show);

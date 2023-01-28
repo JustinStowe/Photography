@@ -6,18 +6,22 @@ const Button = require("../components/Button");
 class Edit extends React.Component {
   render() {
     const { photo } = this.props;
-    const { _id, name, date, image, contentType } = photo;
+    const { id, name, date, image, contentType } = photo;
 
     return (
       <DefaultLayout title="photo edit page">
         {/* NOTE: action will be the route, method will be the HTTP verb */}
         <nav>
-          <a href={`/home/${_id}`}>
+          <a href={`/home/${id}`}>
             <Button>Back</Button>
           </a>
         </nav>
         <section className="flex flex-col items-center justify-items-center ">
-          <form action={`/home/${_id}?_method=PUT`} method="POST">
+          <form
+            action={`/home/${id}?_method=PUT`}
+            method="POST"
+            encType="multipart/form-data"
+          >
             {/* the enctype attribute is set to multipart/form-data, which is necessary for file uploads. */}
             <div className="">
               <img
@@ -27,10 +31,8 @@ class Edit extends React.Component {
                 width={400}
                 height={400}
               />
-              <Button>
-                <input type="file" id="image" name="image" accept="image/*" />
-              </Button>
             </div>
+            <input type="file" name="image" accept="image/*" />
             <h1>
               Name: <input type="string" name="name" defaultValue={name} />
             </h1>
@@ -41,7 +43,7 @@ class Edit extends React.Component {
             <Button>
               <input type="submit" name="" value="Submit Changes" />
             </Button>
-            <form action={`/home/${photo._id}?_method=DELETE`} method="POST">
+            <form action={`/home/${photo.id}?_method=DELETE`} method="POST">
               <Button>
                 <input type="submit" value="Delete" />
               </Button>

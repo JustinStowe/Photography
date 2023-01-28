@@ -1,7 +1,7 @@
 /** @format */
 
 const Photo = require("../../models/photo");
-const multer = require("multer");
+// const multer = require("multer");
 // const storage = multer.memoryStorage();
 // const upload = multer({ storage: storage });
 const upload = require("../../middleware/uploadEngine");
@@ -52,21 +52,15 @@ const dataController = {
     });
   },
   update(req, res, next) {
-    const updatedPhoto = {};
-    if (req.body.name) {
-      updatedPhoto.name = req.body.name;
-    }
-    if (req.body.date) {
-      updatedPhoto.date = req.body.date;
-    }
     if (req.file) {
-      updatedPhoto.image = req.file.buffer;
-      updatedPhoto.contentType = req.file.mimetype;
+      req.body.image = req.file.buffer;
+      req.body.contentType = req.file.mimetype;
     }
+    console.log(req.body);
     Photo.findByIdAndUpdate(
       req.params.id,
-      updatedPhoto,
-      { new: true },
+      req.body,
+
       (error, updatedPhoto) => {
         if (error) {
           res.status(404).send({
