@@ -2,10 +2,11 @@
 
 function checkAuth(req, res, next) {
   if (req.session.loggedIn) {
-    next();
+    req.isAuthenticated = true;
   } else {
-    res.redirect("/user/login");
+    req.isAuthenticated = false;
   }
+  next();
 }
 
 module.exports = checkAuth;

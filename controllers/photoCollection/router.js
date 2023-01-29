@@ -5,9 +5,13 @@ const router = express.Router();
 // Data and View controller
 const dataController = require("./dataController");
 const viewController = require("./viewController");
-// const apiController = require("./apiController");
+const apiController = require("./apiController");
+
+//Middleware
 const upload = require("../../middleware/uploadEngine");
+const logStatus = require("../../middleware/logStatus");
 const checkAuth = require("../../middleware/checkAuth");
+
 // router.use((req, res, next) => {
 //   console.log("session", req.session);
 
@@ -17,11 +21,10 @@ const checkAuth = require("../../middleware/checkAuth");
 //     res.redirect("/user/login");
 //   }
 // });
-
 /**
  * Photo - Api routes
  */
-/*
+
 // Index - Api
 router.get("/api", dataController.index, apiController.index);
 
@@ -36,14 +39,13 @@ router.put("/api/:id", dataController.update, apiController.show);
 
 // Create - Api
 router.post("/api/", dataController.create, apiController.show);
- */
 
 /**
  * Photos
  */
 
 // Index
-router.get("/", dataController.index, viewController.index);
+router.get("/", logStatus, dataController.index, viewController.index);
 
 // New
 router.get("/new", checkAuth, viewController.newView);
@@ -71,6 +73,6 @@ router.post("/", checkAuth, dataController.create, viewController.redirectHome);
 router.get("/:id/edit", checkAuth, dataController.show, viewController.edit);
 
 // Show - Route
-router.get("/:id", dataController.show, viewController.show);
+router.get("/:id", logStatus, dataController.show, viewController.show);
 
 module.exports = router;
