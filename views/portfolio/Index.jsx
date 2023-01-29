@@ -2,10 +2,11 @@
 
 const React = require("react");
 const Layout = require("../components/DefaultLayout");
-
+const logStatus = require("../../middleware/authentication");
 class Index extends React.Component {
   render() {
     const { Photo } = this.props;
+    // const isAuthenticated = logStatus(); isAuthenticated={isAuthenticated}
     return (
       <Layout>
         <div>

@@ -9,8 +9,8 @@ const apiController = require("./apiController");
 
 //Middleware
 const upload = require("../../middleware/uploadEngine");
-const logStatus = require("../../middleware/logStatus");
-const checkAuth = require("../../middleware/checkAuth");
+const logStatus = require("../../middleware/authentication");
+const checkAuth = require("../../middleware/authentication");
 
 // router.use((req, res, next) => {
 //   console.log("session", req.session);
@@ -21,6 +21,7 @@ const checkAuth = require("../../middleware/checkAuth");
 //     res.redirect("/user/login");
 //   }
 // });
+
 /**
  * Photo - Api routes
  */
@@ -31,14 +32,14 @@ router.get("/api", dataController.index, apiController.index);
 // Show - Api
 router.get("/api/:id", dataController.show, apiController.show);
 
-// Delete - Api
-router.delete("/api/:id", dataController.destroy, apiController.show);
+// // Delete - Api
+// router.delete("/api/:id", dataController.destroy, apiController.show);
 
-// Update - Api
-router.put("/api/:id", dataController.update, apiController.show);
+// // Update - Api
+// router.put("/api/:id", dataController.update, apiController.show);
 
-// Create - Api
-router.post("/api/", dataController.create, apiController.show);
+// // Create - Api
+// router.post("/api/", dataController.create, apiController.show);
 
 /**
  * Photos

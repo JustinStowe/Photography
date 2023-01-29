@@ -29,7 +29,6 @@ db.once("open", () => {
  * Middleware
  */
 const setupMiddleware = require("./middleware/setupMiddleware");
-
 setupMiddleware(app);
 
 /**

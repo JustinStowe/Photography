@@ -5,6 +5,7 @@ const Header = require("./Header");
 // Higher order component
 class DefaultLayout extends React.Component {
   render() {
+    // const { isAuthenticated } = this.props; isAuthenticated={isAuthenticated}
     return (
       <html>
         <head>
