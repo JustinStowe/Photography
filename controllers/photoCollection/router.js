@@ -9,8 +9,8 @@ const apiController = require("./apiController");
 
 //Middleware
 const upload = require("../../middleware/uploadEngine");
-const logStatus = require("../../middleware/authentication");
-const checkAuth = require("../../middleware/authentication");
+const logStatus = require("../../middleware/logStatus");
+const checkAuth = require("../../middleware/checkAuth");
 
 // router.use((req, res, next) => {
 //   console.log("session", req.session);

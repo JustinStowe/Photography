@@ -12,7 +12,7 @@ class DefaultLayout extends React.Component {
           <title>{this.props.title}</title>
           <script src="https://cdn.tailwindcss.com"></script>
         </head>
-        <body>
+        <body className="bg-green-200">
           <Header />
           <h1>{this.props.title}</h1>
           {this.props.children}
