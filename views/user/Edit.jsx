@@ -32,7 +32,6 @@ class Edit extends React.Component {
                 height={400}
               />
             </div>
-            <input type="file" name="image" accept="image/*" />
             <h1>
               Name: <input type="string" name="name" defaultValue={name} />
             </h1>
@@ -43,11 +42,6 @@ class Edit extends React.Component {
             <Button>
               <input type="submit" name="" value="Submit Changes" />
             </Button>
-            <form action={`/home/${photo.id}?_method=DELETE`} method="POST">
-              <Button>
-                <input type="submit" value="Delete" />
-              </Button>
-            </form>
           </form>
         </section>
       </DefaultLayout>

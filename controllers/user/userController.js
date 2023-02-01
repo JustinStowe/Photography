@@ -15,11 +15,12 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/account", (req, res) => {
+  // const {username, password} = this.props
   res.render("user/Account");
 });
 
 router.post("/signup", async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, name, phoneNumber, email, projectId } = req.body;
 
   try {
     // hash the password that we recieve
@@ -30,6 +31,10 @@ router.post("/signup", async (req, res) => {
     const createdUser = await User.create({
       username,
       password: hashedPassword,
+      name,
+      phoneNumber,
+      email,
+      projectId,
     });
     console.log(createdUser);
     res.redirect("/user/login");
@@ -49,6 +54,7 @@ router.post("/login", async (req, res) => {
 
     if (result) {
       req.session.username = foundUser.username;
+      req.session.password = foundUser.password;
       req.session.loggedIn = true;
 
       res.redirect("/home");
@@ -61,11 +67,50 @@ router.post("/login", async (req, res) => {
     res.status(500).send(error);
   }
 });
+router.put("/:id", async (req, res) => {
+  const { username, currentpassword, newpassword } = req.body;
 
+  try {
+    //find user by id
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).send("user not found");
+    }
+
+    //Hash the new password if provided
+    if (password) {
+      try {
+        const result = await bcrypt.compare(currentpassword, user.password);
+        if (result) {
+          user.password = await bcrypt.hash(
+            newpassword,
+            await bcrypt.genSalt(10)
+          );
+        } else {
+          res.json({ error: "old password is incorrect" });
+        }
+      } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+      }
+    }
+    //update the username if provided
+    if (username) {
+      user.username = username;
+    }
+
+    //save the changes
+    const updatedUser = await user.save();
+    res.send(updatedUser);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+});
 router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     console.error(err);
-    res.redirect("/");
+    res.redirect("/home");
   });
 });
 

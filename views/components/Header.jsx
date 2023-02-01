@@ -15,30 +15,6 @@ class Header extends React.Component {
         </a>
       </nav>
     );
-    /*
-    const { isAuthenticated } = this.props;
-    if (isAuthenticated) {
-      return (
-        <nav className="flex flex-row align-center justify-between p-4 bg-green-900 w-screen">
-          <a href="/home/New">
-            {" "}
-            <Button>Upload new Photo</Button>
-          </a>
-          <a href="/user/logout">
-            <Button>Logout</Button>
-          </a>
-        </nav>
-      );
-    } else {
-      return (
-        <nav className="flex flex-row align-center justify-between p-4 bg-green-900 w-screen">
-          <a href="/user/login">
-            <Button>Login</Button>
-          </a>
-        </nav>
-      );
-    }
-    */
   }
 }
 module.exports = Header;

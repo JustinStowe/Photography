@@ -9,9 +9,14 @@ class Signup extends React.Component {
         <h1>Signup</h1>
 
         <form action="/user/signup" method="POST">
-          Name: <input type="text" defaultValue="" name="username" required />
+          UserName:{" "}
+          <input type="text" defaultValue="" name="username" required />
           Password:{" "}
           <input type="password" defaultValue="" name="password" required />
+          Name: <input type="text" defaultValue="" name="name" required />
+          phone Number:{" "}
+          <input type="Number" defaultValue="" name="phoneNumber" />
+          Email: <input type="text" defaultValue="" name="email" />
           <input type="submit" name="" value="Signup" />
         </form>
         <h1>If you already have an account</h1>
