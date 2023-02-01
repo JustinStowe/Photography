@@ -1,14 +1,14 @@
 /** @format */
 
 const React = require("react");
-const DefaultLayout = require("../components/DefaultLayout");
+const PublicLayout = require("../components/PublicLayout");
 const Button = require("../components/Button");
 class Show extends React.Component {
   render() {
     const { photo } = this.props;
 
     return (
-      <DefaultLayout title="photo show page">
+      <PublicLayout title="photo show page">
         <nav>
           <a href="/home">
             <Button>back</Button>
@@ -26,19 +26,8 @@ class Show extends React.Component {
             <h1>{photo.name}</h1>
             <h2>{photo.date}</h2>
           </div>
-
-          <div className="flex">
-            <a href={`/home/${photo.id}/edit`}>
-              <Button>Edit Photo</Button>
-            </a>
-            <form action={`/home/${photo.id}?_method=DELETE`} method="POST">
-              <Button>
-                <input type="submit" value="Delete" />
-              </Button>
-            </form>
-          </div>
         </section>
-      </DefaultLayout>
+      </PublicLayout>
     );
   }
 }

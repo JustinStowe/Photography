@@ -4,16 +4,22 @@ const RESOURCE_PATH = "/home";
 
 const viewController = {
   index(req, res) {
-    res.render("portfolio/Index", res.locals.data);
+    res.render("publicPortfolio/Index", res.locals.data);
+  },
+  userIndex(req, res) {
+    res.render("/user/index");
   },
   show(req, res) {
-    res.render("portfolio/Show", res.locals.data);
+    res.render("publicPortfolio/Show", res.locals.data);
+  },
+  userShow(req, res) {
+    res.render("/user/show");
   },
   edit(req, res) {
-    res.render("portfolio/Edit", res.locals.data);
+    res.render("user/Edit", res.locals.data);
   },
   newView(req, res) {
-    res.render("portfolio/New");
+    res.render("user/New");
   },
   redirectHome(req, res) {
     res.redirect(RESOURCE_PATH);

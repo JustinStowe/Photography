@@ -2,19 +2,19 @@
 const React = require("react");
 const Button = require("./Button");
 
-class Header extends React.Component {
+class PublicHeader extends React.Component {
   render() {
     return (
       <nav className="flex flex-row align-center justify-between p-4 bg-green-700 w-screen">
-        <a href="/home/New">
+        <a href="/home/">
           {" "}
-          <Button>Upload new Photo</Button>
+          <Button>Home</Button>
         </a>
-        <a href="/user/account">
-          <Button>Account</Button>
+        <a href="/user/login">
+          <Button>Log In</Button>
         </a>
       </nav>
     );
   }
 }
-module.exports = Header;
+module.exports = PublicHeader;

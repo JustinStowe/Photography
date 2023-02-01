@@ -16,7 +16,21 @@ const dataController = {
       }
     });
   },
+  userIndex(req, res, next) {
+    Photo.find({ username: req.session.username }, (error, allPhotos) => {
+      if (error) {
+        res.status(404).send({
+          msg: error.message,
+        });
+      } else {
+        res.locals.data.photos = allPhotos;
+        next();
+      }
+    });
+  },
   create(req, res, next) {
+    req.body.username = req.session.username;
+
     upload.single("image")(req, res, (err) => {
       if (err) {
         return res.status(404).json({ msg: err.message });

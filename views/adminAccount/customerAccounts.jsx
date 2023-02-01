@@ -1,7 +1,7 @@
 /** @format */
 
 const React = require("react");
-const Layout = require("../components/DefaultLayout");
+const Layout = require("../components/PublicLayout");
 class customerAccounts extends React.Component {
   render() {
     const { User } = this.props;

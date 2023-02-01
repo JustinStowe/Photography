@@ -14,10 +14,10 @@ router.get("/login", (req, res) => {
   res.render("user/Login");
 });
 
-router.get("/account", (req, res) => {
-  // const {username, password} = this.props
-  res.render("user/Account");
-});
+// router.get("/account", (req, res) => {
+//   // const {username, password} = this.props
+//   res.render("user/Account");
+// });
 
 router.post("/signup", async (req, res) => {
   const { username, password, name, phoneNumber, email, projectId } = req.body;
@@ -67,46 +67,46 @@ router.post("/login", async (req, res) => {
     res.status(500).send(error);
   }
 });
-router.put("/:id", async (req, res) => {
-  const { username, currentpassword, newpassword } = req.body;
+// router.put("/:id", async (req, res) => {
+//   const { username, currentpassword, newpassword } = req.body;
 
-  try {
-    //find user by id
-    const user = await User.findById(req.params.id);
-    if (!user) {
-      return res.status(404).send("user not found");
-    }
+//   try {
+//     //find user by id
+//     const user = await User.findById(req.params.id);
+//     if (!user) {
+//       return res.status(404).send("user not found");
+//     }
 
-    //Hash the new password if provided
-    if (password) {
-      try {
-        const result = await bcrypt.compare(currentpassword, user.password);
-        if (result) {
-          user.password = await bcrypt.hash(
-            newpassword,
-            await bcrypt.genSalt(10)
-          );
-        } else {
-          res.json({ error: "old password is incorrect" });
-        }
-      } catch (error) {
-        console.log(error);
-        res.status(500).send(error);
-      }
-    }
-    //update the username if provided
-    if (username) {
-      user.username = username;
-    }
+//     //Hash the new password if provided
+//     if (password) {
+//       try {
+//         const result = await bcrypt.compare(currentpassword, user.password);
+//         if (result) {
+//           user.password = await bcrypt.hash(
+//             newpassword,
+//             await bcrypt.genSalt(10)
+//           );
+//         } else {
+//           res.json({ error: "old password is incorrect" });
+//         }
+//       } catch (error) {
+//         console.log(error);
+//         res.status(500).send(error);
+//       }
+//     }
+//     //update the username if provided
+//     if (username) {
+//       user.username = username;
+//     }
 
-    //save the changes
-    const updatedUser = await user.save();
-    res.send(updatedUser);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error);
-  }
-});
+//     //save the changes
+//     const updatedUser = await user.save();
+//     res.send(updatedUser);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send(error);
+//   }
+// });
 router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     console.error(err);

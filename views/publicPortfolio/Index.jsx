@@ -1,13 +1,12 @@
 /** @format */
 
 const React = require("react");
-const Layout = require("../components/DefaultLayout");
+const PublicLayout = require("../components/PublicLayout");
 class Index extends React.Component {
   render() {
     const { Photo } = this.props;
-    // const isAuthenticated = logStatus(); isAuthenticated={isAuthenticated}
     return (
-      <Layout>
+      <PublicLayout>
         <div>
           <div className="flex justify-center">
             <h1 className="font-sans text-3xl mb-5 ">Picture portfolio Page</h1>
@@ -31,7 +30,7 @@ class Index extends React.Component {
             })}
           </section>
         </div>
-      </Layout>
+      </PublicLayout>
     );
   }
 }

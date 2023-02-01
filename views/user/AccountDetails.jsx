@@ -13,7 +13,7 @@ class AccountDetails extends React.Component {
             <Button>Back</Button>
           </a>
           <section className="grid h-screen place-items-center">
-            <form action={`/user/login/?_method=PUT`} method="POST">
+            <form action={`/user/:id ?_method=PUT`} method="POST">
               <h1>Edit Username</h1>
               Username:{" "}
               <input type="string" name="username" defaultValue={username} />
