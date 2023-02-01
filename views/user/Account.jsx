@@ -12,8 +12,11 @@ class Account extends React.Component {
             <Button>Back</Button>
           </a>
           <section className="grid h-screen place-items-center">
-            <a href={`/user/login`}>
-              <Button>login</Button>
+            <a href={`/accountdetails`}>
+              <Button>Account Details</Button>
+            </a>{" "}
+            <a href={`/photoshoot/:id`}>
+              <Button>Pending Photoshoot photos</Button>
             </a>{" "}
             <a href={`/user/logout`}>
               <Button>logout</Button>

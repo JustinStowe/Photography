@@ -12,7 +12,7 @@ class Account extends React.Component {
             <Button>Back</Button>
           </a>
           <section className="grid h-screen place-items-center">
-            <a href={`/admin/accountdetails`}>
+            <a href={`/user/accountdetails`}>
               <Button>Account Details</Button>
             </a>
             <a href={`/admin/customeraccounts`}>

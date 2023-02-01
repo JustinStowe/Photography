@@ -22,7 +22,7 @@ const checkAuth = require("../../middleware/checkAuth");
 //   }
 // });
 
-/**
+/*
  * Photo - Api routes
  */
 
@@ -32,28 +32,19 @@ router.get("/api", dataController.index, apiController.index);
 // Show - Api
 router.get("/api/:id", dataController.show, apiController.show);
 
-// // Delete - Api
-// router.delete("/api/:id", dataController.destroy, apiController.show);
-
-// // Update - Api
-// router.put("/api/:id", dataController.update, apiController.show);
-
-// // Create - Api
-// router.post("/api/", dataController.create, apiController.show);
-
-/**
- * Photos
+/*
+ * Photo routes
+    (INDUCES)
  */
-
 // Index
-router.get("/", logStatus, dataController.index, viewController.index);
+router.get("/admin", logStatus, dataController.index, viewController.index);
 
 // New
-router.get("/new", checkAuth, viewController.newView);
+router.get("/admin/new", checkAuth, viewController.newView);
 
 // Delete
 router.delete(
-  "/:id",
+  "/admin/:id",
   checkAuth,
   dataController.destroy,
   viewController.redirectHome
@@ -61,7 +52,7 @@ router.delete(
 
 // Update
 router.put(
-  "/:id",
+  "/admin/:id",
   checkAuth,
   upload.single("image"),
   dataController.update,
@@ -74,6 +65,6 @@ router.post("/", checkAuth, dataController.create, viewController.redirectHome);
 router.get("/:id/edit", checkAuth, dataController.show, viewController.edit);
 
 // Show - Route
-router.get("/:id", logStatus, dataController.show, viewController.show);
+router.get("admin/:id", logStatus, dataController.show, viewController.show);
 
 module.exports = router;

@@ -1,9 +1,6 @@
 /** @format */
 
 const Photo = require("../../models/photo");
-// const multer = require("multer");
-// const storage = multer.memoryStorage();
-// const upload = multer({ storage: storage });
 const upload = require("../../middleware/uploadEngine");
 // { username: req.session.username },
 const dataController = {
