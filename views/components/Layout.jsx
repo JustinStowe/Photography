@@ -1,19 +1,19 @@
 /** @format */
 
 const React = require("react");
-const PublicHeader = require("./PublicHeader");
+const Header = require("./Header");
 // Higher order component
-class PublicLayout extends React.Component {
+class Layout extends React.Component {
   render() {
-    // const { isAuthenticated } = this.props; isAuthenticated={isAuthenticated}
+    const { loggedIn } = this.props;
     return (
       <html>
         <head>
           <title>{this.props.title}</title>
           <script src="https://cdn.tailwindcss.com"></script>
         </head>
-        <body className="bg-green-200">
-          <PublicHeader />
+        <body className="bg-gray-900">
+          <Header loggedIn={loggedIn} />
           <h1>{this.props.title}</h1>
           {this.props.children}
         </body>
@@ -22,4 +22,4 @@ class PublicLayout extends React.Component {
   }
 }
 
-module.exports = PublicLayout;
+module.exports = Layout;

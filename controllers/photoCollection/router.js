@@ -22,7 +22,8 @@ const checkAuth = require("../../middleware/checkAuth");
 //   }
 // });
 router.use((req, res, next) => {
-  console.log("session", req.session);
+  // console.log("session", req.session);
+  next();
 });
 /*
  * Photo - Api routes
@@ -40,24 +41,11 @@ router.get("/api/:id", dataController.show, apiController.show);
  */
 // Index
 router.get("/", dataController.index, viewController.index);
-
-// (req, res) => {
-//   if (req.session.loggedIn) {
-//     dataController.userIndex, viewController.userIndex;
-//   } else {
-//     dataController.index, viewController.index;
-//   }
-// });
-
 // New
 router.get("/new", viewController.newView);
 
 // Delete
-router.delete(
-  "/admin/:id",
-  dataController.destroy,
-  viewController.redirectHome
-);
+router.delete("/:id", dataController.destroy, viewController.redirectHome);
 
 // Update
 router.put(
@@ -73,12 +61,13 @@ router.post("/", dataController.create, viewController.redirectHome);
 router.get("/:id/edit", dataController.show, viewController.edit);
 
 // Show - Route
-router.get("/:id", (req, res) => {
-  if (req.session.loggedIn) {
-    dataController.userShow, viewController.userShow;
-  } else {
-    dataController.show, viewController.show;
-  }
-});
+router.get("/:id", dataController.show, viewController.show);
+// (req, res) => {
+//   if (req.session.loggedIn) {
+//     ;
+//   } else {
+//     dataController.show, viewController.show;
+//   }
+// });
 
 module.exports = router;

@@ -45,6 +45,9 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  // if (req.session) {
+  //   req.session = null;
+  // }
   const { username, password } = req.body;
   try {
     // Find the user by their username
@@ -53,10 +56,10 @@ router.post("/login", async (req, res) => {
     const result = await bcrypt.compare(password, foundUser.password);
 
     if (result) {
+      req.session.userId = foundUser._id;
       req.session.username = foundUser.username;
       req.session.password = foundUser.password;
       req.session.loggedIn = true;
-
       res.redirect("/home");
     } else {
       // error if password doesn't match

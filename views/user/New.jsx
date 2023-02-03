@@ -1,13 +1,13 @@
 /** @format */
 
 const React = require("react");
-const DefaultLayout = require("../components/DefaultLayout");
+const Layout = require("../components/Layout");
 const Button = require("../components/Button");
 
 class New extends React.Component {
   render() {
     return (
-      <DefaultLayout title="Upload a new photo page">
+      <Layout title="Upload a new photo page">
         <nav>
           <a href={`/home/`}>
             <Button>Back</Button>
@@ -19,16 +19,24 @@ class New extends React.Component {
             Select an Image to upload:{" "}
             <input type="file" name="image" accept="image/*" />
             <br />
+            <br />
             Name: <input type="text" name="name" />
             <br />
+            <br />
             Date: <input type="text" name="date" />
+            <br />
+            <br />
+            check the box to prevent the image from showing up on the public
+            homepage- Restricted:{" "}
+            <input type="checkbox" name="restricted" defaultChecked />
+            <br />
             <br />
             <Button>
               <input type="submit" name="" value="Upload Image" />
             </Button>
           </form>
         </section>
-      </DefaultLayout>
+      </Layout>
     );
   }
 }

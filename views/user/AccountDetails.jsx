@@ -1,13 +1,13 @@
 /** @format */
 
 const React = require("react");
-const DefaultLayout = require("../components/DefaultLayout");
+const Layout = require("../components/Layout");
 const Button = require("../components/Button");
 class AccountDetails extends React.Component {
   render() {
     const { username, password } = this.props.req.session;
     return (
-      <DefaultLayout title="Account Page">
+      <Layout title="Account Page">
         <nav>
           <a href={`/home/`}>
             <Button>Back</Button>
@@ -30,7 +30,7 @@ class AccountDetails extends React.Component {
             </form>
           </section>
         </nav>
-      </DefaultLayout>
+      </Layout>
     );
   }
 }

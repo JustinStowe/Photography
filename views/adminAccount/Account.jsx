@@ -1,12 +1,12 @@
 /** @format */
 
 const React = require("react");
-const DefaultLayout = require("../components/DefaultLayout");
+const Layout = require("../components/Layout");
 const Button = require("../components/Button");
 class Account extends React.Component {
   render() {
     return (
-      <DefaultLayout title="Account Page">
+      <Layout title="Account Page">
         <nav>
           <a href={`/home/`}>
             <Button>Back</Button>
@@ -26,7 +26,7 @@ class Account extends React.Component {
             </a>
           </section>
         </nav>
-      </DefaultLayout>
+      </Layout>
     );
   }
 }

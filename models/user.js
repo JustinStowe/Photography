@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   phoneNumber: { type: String, required: false },
   email: { type: String, required: true },
   projectId: [{ type: Number, required: false }],
+  // photos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Photo" }],
 });
 
 const User = mongoose.model("User", userSchema);

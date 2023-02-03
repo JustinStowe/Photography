@@ -4,16 +4,10 @@ const RESOURCE_PATH = "/home";
 
 const viewController = {
   index(req, res) {
-    res.render("publicPortfolio/Index", res.locals.data);
-  },
-  userIndex(req, res) {
-    res.render("/user/index");
+    res.render("user/Index", res.locals.data);
   },
   show(req, res) {
-    res.render("publicPortfolio/Show", res.locals.data);
-  },
-  userShow(req, res) {
-    res.render("/user/show");
+    res.render("user/Show", res.locals.data);
   },
   edit(req, res) {
     res.render("user/Edit", res.locals.data);

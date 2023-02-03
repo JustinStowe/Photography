@@ -5,32 +5,41 @@ const upload = require("../../middleware/uploadEngine");
 // { username: req.session.username },
 const dataController = {
   index(req, res, next) {
-    Photo.find((error, allPhotos) => {
-      if (error) {
-        res.status(404).send({
-          msg: error.message,
-        });
-      } else {
-        res.locals.data.photos = allPhotos;
-        next();
-      }
-    });
-  },
-  userIndex(req, res, next) {
-    Photo.find({ username: req.session.username }, (error, allPhotos) => {
-      if (error) {
-        res.status(404).send({
-          msg: error.message,
-        });
-      } else {
-        res.locals.data.photos = allPhotos;
-        next();
-      }
-    });
+    res.locals.data = {};
+    console.log("username", req.session.username);
+    if (!req.session.loggedIn) {
+      Photo.find({ restricted: false }, (error, allPhotos) => {
+        if (error) {
+          res.status(404).send({
+            msg: error.message,
+          });
+        } else {
+          res.locals.data.loggedIn = req.session.loggedIn;
+          res.locals.data.photos = allPhotos;
+          next();
+        }
+      });
+      //{ username: req.session.username }
+    } else {
+      Photo.find(
+        { username: String(req.session.userId) },
+        (error, allPhotos) => {
+          console.log("user id", req.session.userId);
+          if (error) {
+            res.status(404).send({
+              msg: error.message,
+            });
+          } else {
+            res.locals.data.loggedIn = req.session.loggedIn;
+            res.locals.data.photos = allPhotos;
+            next();
+          }
+        }
+      );
+    }
   },
   create(req, res, next) {
     req.body.username = req.session.username;
-
     upload.single("image")(req, res, (err) => {
       if (err) {
         return res.status(404).json({ msg: err.message });
@@ -38,13 +47,15 @@ const dataController = {
       req.body.name = req.body.name;
       req.body.image = req.file.buffer;
       req.body.contentType = req.file.mimetype;
-
+      req.body.restricted = req.body.restricted === "on" ? true : false;
+      req.body.username = req.session.userId;
       // Use Model to create Photo Document
       Photo.create(req.body, (error, createdPhoto) => {
         // Once created - respond to client
         if (error) {
           return res.status(404).json({ msg: error.message });
         }
+        res.locals.data.loggedIn = req.session.loggedIn;
         res.locals.data.photo = createdPhoto;
         next();
       });
@@ -57,17 +68,18 @@ const dataController = {
           msg: error.message,
         });
       } else {
+        res.locals.data.loggedIn = req.session.loggedIn;
         res.locals.data.photo = foundPhoto;
         next();
       }
     });
   },
+
   update(req, res, next) {
     if (req.file) {
       req.body.image = req.file.buffer;
       req.body.contentType = req.file.mimetype;
     }
-    console.log(req.body);
     Photo.findByIdAndUpdate(
       req.params.id,
       req.body,
@@ -78,6 +90,7 @@ const dataController = {
             msg: error.message,
           });
         } else {
+          res.locals.data.loggedIn = req.session.loggedIn;
           res.locals.data.photo = updatedPhoto;
           next();
         }
@@ -92,6 +105,7 @@ const dataController = {
           msg: error.message,
         });
       } else {
+        res.locals.data.loggedIn = req.session.loggedIn;
         res.locals.data.photo = photo;
         next();
       }

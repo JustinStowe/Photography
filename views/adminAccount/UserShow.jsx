@@ -1,14 +1,14 @@
 /** @format */
 
 const React = require("react");
-const DefaultLayout = require("../components/DefaultLayout");
+const Layout = require("../components/Layout");
 const Button = require("../components/Button");
 class UserShow extends React.Component {
   render() {
     const { User } = this.props;
 
     return (
-      <DefaultLayout title="User show page">
+      <Layout title="User show page">
         <nav>
           <a href="/home">
             <Button>back</Button>
@@ -38,7 +38,7 @@ class UserShow extends React.Component {
             </form>
           </div>
         </section>
-      </DefaultLayout>
+      </Layout>
     );
   }
 }
