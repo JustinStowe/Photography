@@ -10,7 +10,7 @@ class SignUp extends React.Component {
         <div className="flex flex-col items-center justify-items-center ">
           <h1 className="font-sans text-3xl mb-5 text-white ">Sign-up</h1>
           <section className="flex flex-col items-center justify-items-center text-white ">
-            <form action="/user/signup" method="POST">
+            <form action="/user/SignUp" method="POST">
               UserName:{" "}
               <input type="text" defaultValue=" " name="username" required />
               <br />
