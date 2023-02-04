@@ -3,7 +3,7 @@
 const React = require("react");
 const Layout = require("../components/Layout");
 const Button = require("../components/Button");
-class Signup extends React.Component {
+class SignUp extends React.Component {
   render() {
     return (
       <Layout>
@@ -53,4 +53,4 @@ class Signup extends React.Component {
   }
 }
 
-module.exports = Signup;
+module.exports = SignUp;

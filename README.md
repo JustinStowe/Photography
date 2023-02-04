@@ -49,7 +49,6 @@ To create a tool that simplifies a photographer's life and helps them run their 
 
 ![image](https://user-images.githubusercontent.com/110639329/216745342-c8fa332d-9b26-4c4a-ad8d-0f8e369cc3ff.png)
 
-
 ## Technologies Used
 
 - MongoDB
