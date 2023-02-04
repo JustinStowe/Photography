@@ -41,6 +41,15 @@ To create a tool that simplifies a photographer's life and helps them run their 
 
 ## Screen shots
 
+![image](https://user-images.githubusercontent.com/110639329/216745261-4e6e996e-39b2-452b-b194-6ad4944c2fc1.png)
+
+![image](https://user-images.githubusercontent.com/110639329/216745275-e23f8fba-332e-4bce-b655-a98a5c13fee7.png)
+
+![image](https://user-images.githubusercontent.com/110639329/216745311-23487cdc-5433-49dc-b006-adac062283c5.png)
+
+![image](https://user-images.githubusercontent.com/110639329/216745342-c8fa332d-9b26-4c4a-ad8d-0f8e369cc3ff.png)
+
+
 ## Technologies Used
 
 - MongoDB
@@ -66,3 +75,9 @@ To create a tool that simplifies a photographer's life and helps them run their 
 - Interactive project ID list
 - Ability to change account details
 - Admin ability to manage client photos
+
+## Wire Frame and ERD
+
+![image](https://user-images.githubusercontent.com/110639329/216745056-d844f6cd-32a3-4d9f-bbb1-f4010551faf6.png)
+
+![image](https://user-images.githubusercontent.com/110639329/216744992-d86333b3-662a-4400-9307-6e7e98ad19d8.png)
