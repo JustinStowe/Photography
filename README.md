@@ -4,7 +4,7 @@
 
 ## Description
 
-A tool that addresses the majority of the needs of a photographer, serving as a one-stop shop for their needs.
+A tool that addresses the majority of the needs of a photographer, hopefully serving as a one-stop shop for their needs.
 
 ## The end goal
 
