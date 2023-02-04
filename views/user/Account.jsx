@@ -3,10 +3,11 @@
 const React = require("react");
 const Layout = require("../components/Layout");
 const Button = require("../components/Button");
+const Text = require("../components/Text");
 class Account extends React.Component {
   render() {
     return (
-      <Layout title="Account Page">
+      <Layout>
         <nav>
           <a href={`/home/`}>
             <Button>Back</Button>

@@ -3,19 +3,20 @@
 const React = require("react");
 const Layout = require("../components/Layout");
 const Button = require("../components/Button");
+const Text = require("../components/Text");
 class SignUp extends React.Component {
   render() {
     return (
       <Layout>
         <div className="flex flex-col items-center justify-items-center ">
-          <h1 className="font-sans text-3xl mb-5 text-white ">Sign-up</h1>
-          <section className="flex flex-col items-center justify-items-center text-white ">
+          <Text>Sign up</Text>
+          <section className="flex flex-col items-center justify-items-center ">
             <form action="/user/SignUp" method="POST">
-              UserName:{" "}
+              <Text>UserName:</Text>
               <input type="text" defaultValue=" " name="username" required />
               <br />
               <br />
-              Password:{" "}
+              <Text>Password:</Text>
               <input
                 type="password"
                 defaultValue=" "
@@ -24,14 +25,16 @@ class SignUp extends React.Component {
               />
               <br />
               <br />
-              Name: <input type="text" defaultValue=" " name="name" required />
+              <Text>Name:</Text>
+              <input type="text" defaultValue=" " name="name" required />
               <br />
               <br />
-              phone Number:{" "}
+              <Text>Phone Number:</Text>
               <input type="Number" defaultValue=" " name="phoneNumber" />
               <br />
               <br />
-              Email: <input type="text" defaultValue=" " name="email" />
+              <Text>Email:</Text>
+              <input type="text" defaultValue=" " name="email" />
               <br />
               <br />
               <div className="flex justify-center">
@@ -42,7 +45,7 @@ class SignUp extends React.Component {
             </form>
             <br />
             <br />
-            <h1>If you already have an account</h1>
+            <Text>If you already have an account</Text>
             <a href="/user/login/">
               <Button>Login Here</Button>
             </a>

@@ -3,17 +3,19 @@
 const React = require("react");
 const Layout = require("../components/Layout");
 const Button = require("../components/Button");
+const Text = require("../components/Text");
 class Login extends React.Component {
   render() {
     return (
       <Layout>
         <div className="flex flex-col items-center justify-items-center ">
-          <h1 className="font-sans text-3xl mb-5 text-white ">Login</h1>
+          <Text>Login</Text>
           <br />
           <br />
-          <form className="text-white" action="/user/login" method="POST">
-            Name: <input type="text" defaultValue="" name="username" required />
-            Password:{" "}
+          <form action="/user/login" method="POST">
+            <Text>Name:</Text>{" "}
+            <input type="text" defaultValue="" name="username" required />
+            <Text>Password:</Text>
             <input
               className="text-black"
               type="password"
@@ -29,8 +31,8 @@ class Login extends React.Component {
           </form>
           <br />
           <br />
-          <p className=" text-white">Don't have an account?</p>
-          <a className="text-white" href="/user/signup">
+          <Text>Don't have an account?</Text>
+          <a href="/user/signup">
             <Button>Sign Up Here</Button>
           </a>
         </div>

@@ -5,9 +5,9 @@ const Layout = require("../components/Layout");
 const Button = require("../components/Button");
 class AccountDetails extends React.Component {
   render() {
-    const { username, password } = this.props.req.session;
+    const { username, password, loggedIn } = this.props.req.session;
     return (
-      <Layout title="Account Page">
+      <Layout loggedIn={loggedIn}>
         <nav>
           <a href={`/home/`}>
             <Button>Back</Button>

@@ -3,25 +3,26 @@
 const React = require("react");
 const Layout = require("../components/Layout");
 const Button = require("../components/Button");
+const Text = require("../components/Text");
 class Edit extends React.Component {
   render() {
-    const { photo } = this.props;
+    const { photo, loggedIn } = this.props;
     const { id, name, date, image, contentType } = photo;
 
     return (
-      <Layout title="photo edit page">
+      <Layout loggedIn={loggedIn}>
         <nav>
           <a href={`/home/${id}`}>
             <Button>Back</Button>
           </a>
         </nav>
-        <section className="flex flex-col items-center justify-items-center text-white ">
+        <section className="flex flex-col items-center justify-items-center">
           <form
             action={`/home/${id}?_method=PUT`}
             method="POST"
             encType="multipart/form-data"
           >
-            <div className="rounded-lg shadow-md m-2 p-4 bg-gray-700">
+            <div className="rounded-lg shadow-md m-2 p-2 bg-gray-700 justify-center items-center">
               <img
                 src={`data:${contentType};base64,${Buffer.from(image).toString(
                   "base64"
@@ -29,29 +30,34 @@ class Edit extends React.Component {
                 width={400}
                 height={400}
               />
-              <h1>{name}</h1>
+              <Text>{name}</Text>
             </div>
-            <input type="file" name="image" accept="image/*" />
+            <input
+              className="text-white"
+              type="file"
+              name="image"
+              accept="image/*"
+            />
             <br />
             <br />
-            <h1>
+            <Text>
               Name: <input type="string" name="name" defaultValue={name} />
-            </h1>
+            </Text>
             <br />
             <br />
-            <h2>
+            <Text>
               Date: <input type="string" name="date" defaultValue={date} />
-            </h2>
+            </Text>
             <br />
             <br />
-            <h2>
+            <Text>
               <p>
                 check the box to prevent the image from showing up on the public
                 homepage.
               </p>
               Restricted:{" "}
               <input type="checkbox" name="restricted" defaultChecked />
-            </h2>
+            </Text>
             <Button>
               <input type="submit" name="" value="Submit Changes" />
             </Button>

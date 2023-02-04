@@ -6,7 +6,7 @@ class Text extends React.Component {
   render() {
     const { children } = this.props;
 
-    return <h1 className="text-white">{children}</h1>;
+    return <h1 className=" font-sans text-2X1 mb-5 text-white">{children}</h1>;
   }
 }
 

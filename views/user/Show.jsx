@@ -3,6 +3,7 @@
 const React = require("react");
 const Layout = require("../components/Layout");
 const Button = require("../components/Button");
+const Text = require("../components/Text");
 class Show extends React.Component {
   render() {
     const { photo, loggedIn } = this.props;
@@ -23,8 +24,8 @@ class Show extends React.Component {
               width={400}
               height={400}
             />
-            <h1 className="text-white">{photo.name}</h1>
-            <h2 className="text-white">{photo.date}</h2>
+            <Text>{photo.name}</Text>
+            <Text>{photo.date}</Text>
           </div>
           {loggedIn && (
             <div className="flex">

@@ -3,6 +3,7 @@
 const React = require("react");
 const Layout = require("../components/Layout");
 const Button = require("../components/Button");
+const Text = require("../components/Text");
 
 class New extends React.Component {
   render() {
@@ -13,20 +14,22 @@ class New extends React.Component {
             <Button>Back</Button>
           </a>
         </nav>
-        <section className="grid h-screen place-items-center text-white">
+        <section className="grid h-screen place-items-center">
           <form action="/home" method="POST" encType="multipart/form-data">
-            Select an Image to upload:{" "}
+            <Text>Select an Image to upload:</Text>
             <input type="file" name="image" accept="image/*" />
             <br />
             <br />
-            Name: <input type="text" name="name" />
+            <Text>Name:</Text> <input type="text" name="name" />
             <br />
             <br />
-            Date: <input type="text" name="date" />
+            <Text>Date:</Text> <input type="text" name="date" />
             <br />
             <br />
-            check the box to prevent the image from showing up on the public
-            homepage- Restricted:{" "}
+            <Text>
+              check the box to prevent the image from showing up on the public
+              homepage- Restricted:
+            </Text>
             <input type="checkbox" name="restricted" defaultChecked />
             <br />
             <br />
