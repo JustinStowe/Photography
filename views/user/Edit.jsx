@@ -15,7 +15,7 @@ class Edit extends React.Component {
             <Button>Back</Button>
           </a>
         </nav>
-        <section className="flex flex-col items-center justify-items-center ">
+        <section className="flex flex-col items-center justify-items-center text-white ">
           <form
             action={`/home/${id}?_method=PUT`}
             method="POST"
