@@ -14,7 +14,13 @@ class Login extends React.Component {
           <form className="text-white" action="/user/login" method="POST">
             Name: <input type="text" defaultValue="" name="username" required />
             Password:{" "}
-            <input type="password" defaultValue="" name="password" required />
+            <input
+              className="text-black"
+              type="password"
+              defaultValue=""
+              name="password"
+              required
+            />
             <div>
               <Button>
                 <input type="submit" name="" value="Login" />
