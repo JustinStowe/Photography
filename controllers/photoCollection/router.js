@@ -2,27 +2,12 @@
 
 const express = require("express");
 const router = express.Router();
-// Data and View controller
 const dataController = require("./dataController");
 const viewController = require("./viewController");
 const apiController = require("./apiController");
-
-//Middleware
 const upload = require("../../middleware/uploadEngine");
-const logStatus = require("../../middleware/logStatus");
-const checkAuth = require("../../middleware/checkAuth");
 
-// router.use((req, res, next) => {
-//   console.log("session", req.session);
-
-//   if (req.session.loggedIn) {
-//     next();
-//   } else {
-//     res.redirect("/user/login");
-//   }
-// });
 router.use((req, res, next) => {
-  // console.log("session", req.session);
   next();
 });
 /*
@@ -41,6 +26,7 @@ router.get("/api/:id", dataController.show, apiController.show);
  */
 // Index
 router.get("/", dataController.index, viewController.index);
+
 // New
 router.get("/new", viewController.newView);
 
@@ -54,20 +40,13 @@ router.put(
   dataController.update,
   viewController.redirectShow
 );
-
 // Create
 router.post("/", dataController.create, viewController.redirectHome);
+
 // Edit
 router.get("/:id/edit", dataController.show, viewController.edit);
 
 // Show - Route
 router.get("/:id", dataController.show, viewController.show);
-// (req, res) => {
-//   if (req.session.loggedIn) {
-//     ;
-//   } else {
-//     dataController.show, viewController.show;
-//   }
-// });
 
 module.exports = router;

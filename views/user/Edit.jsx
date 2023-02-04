@@ -10,7 +10,6 @@ class Edit extends React.Component {
 
     return (
       <Layout title="photo edit page">
-        {/* NOTE: action will be the route, method will be the HTTP verb */}
         <nav>
           <a href={`/home/${id}`}>
             <Button>Back</Button>
@@ -22,7 +21,6 @@ class Edit extends React.Component {
             method="POST"
             encType="multipart/form-data"
           >
-            {/* the enctype attribute is set to multipart/form-data, which is necessary for file uploads. */}
             <div className="rounded-lg shadow-md m-2 p-4 bg-gray-700">
               <img
                 src={`data:${contentType};base64,${Buffer.from(image).toString(
@@ -70,5 +68,3 @@ class Edit extends React.Component {
 }
 
 module.exports = Edit;
-//  <label htmlFor="image">Select an image to upload:</label>{" "}
-//           <input type="file" id="image" name="image" accept="image/*" />

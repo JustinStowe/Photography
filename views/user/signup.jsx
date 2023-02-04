@@ -8,25 +8,30 @@ class Signup extends React.Component {
     return (
       <Layout>
         <div className="flex flex-col items-center justify-items-center ">
-          <h1 className="font-sans text-3xl mb-5 ">Signup</h1>
-          <section className="flex flex-col items-center justify-items-center ">
+          <h1 className="font-sans text-3xl mb-5 text-white ">Sign-up</h1>
+          <section className="flex flex-col items-center justify-items-center text-white ">
             <form action="/user/signup" method="POST">
               UserName:{" "}
-              <input type="text" defaultValue="" name="username" required />
+              <input type="text" defaultValue=" " name="username" required />
               <br />
               <br />
               Password:{" "}
-              <input type="password" defaultValue="" name="password" required />
+              <input
+                type="password"
+                defaultValue=" "
+                name="password"
+                required
+              />
               <br />
               <br />
-              Name: <input type="text" defaultValue="" name="name" required />
+              Name: <input type="text" defaultValue=" " name="name" required />
               <br />
               <br />
               phone Number:{" "}
-              <input type="Number" defaultValue="" name="phoneNumber" />
+              <input type="Number" defaultValue=" " name="phoneNumber" />
               <br />
               <br />
-              Email: <input type="text" defaultValue="" name="email" />
+              Email: <input type="text" defaultValue=" " name="email" />
               <br />
               <br />
               <div className="flex justify-center">

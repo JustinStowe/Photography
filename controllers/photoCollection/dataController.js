@@ -2,7 +2,6 @@
 
 const Photo = require("../../models/photo");
 const upload = require("../../middleware/uploadEngine");
-// { username: req.session.username },
 const dataController = {
   index(req, res, next) {
     res.locals.data = {};
@@ -19,7 +18,6 @@ const dataController = {
           next();
         }
       });
-      //{ username: req.session.username }
     } else {
       Photo.find(
         { username: String(req.session.userId) },
@@ -49,9 +47,8 @@ const dataController = {
       req.body.contentType = req.file.mimetype;
       req.body.restricted = req.body.restricted === "on" ? true : false;
       req.body.username = req.session.userId;
-      // Use Model to create Photo Document
+
       Photo.create(req.body, (error, createdPhoto) => {
-        // Once created - respond to client
         if (error) {
           return res.status(404).json({ msg: error.message });
         }

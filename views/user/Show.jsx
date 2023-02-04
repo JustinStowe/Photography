@@ -8,7 +8,7 @@ class Show extends React.Component {
     const { photo, loggedIn } = this.props;
 
     return (
-      <Layout title="photo show page">
+      <Layout>
         <nav>
           <a href="/home">
             <Button>back</Button>
@@ -23,8 +23,8 @@ class Show extends React.Component {
               width={400}
               height={400}
             />
-            <h1>{photo.name}</h1>
-            <h2>{photo.date}</h2>
+            <h1 className="text-white">{photo.name}</h1>
+            <h2 className="text-white">{photo.date}</h2>
           </div>
           {loggedIn && (
             <div className="flex">

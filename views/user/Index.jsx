@@ -5,7 +5,6 @@ const Layout = require("../components/Layout");
 class Index extends React.Component {
   render() {
     const { Photo, loggedIn } = this.props;
-    // const isAuthenticated = logStatus(); isAuthenticated={isAuthenticated}
     return (
       <Layout loggedIn={loggedIn}>
         <div>
