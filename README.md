@@ -6,6 +6,10 @@
 
 A tool that addresses the majority of the needs of a photographer, hopefully serving as a one-stop shop for their needs.
 
+## Getting Started
+
+Link to webpage: `https://myphotographypage.herokuapp.com/user/login`
+
 ## The end goal
 
 To create a tool that simplifies a photographer's life and helps them run their business efficiently.
