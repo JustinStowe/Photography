@@ -84,3 +84,15 @@ To create a tool that simplifies a photographer's life and helps them run their 
 ![image](https://user-images.githubusercontent.com/110639329/216745056-d844f6cd-32a3-4d9f-bbb1-f4010551faf6.png)
 
 ![image](https://user-images.githubusercontent.com/110639329/216744992-d86333b3-662a-4400-9307-6e7e98ad19d8.png)
+
+## Restful routes table
+
+|      URL       | HTTP VERB | Mongoose model function |
+| :------------: | --------: | ----------------------: |
+|     /home/     |       GET |                   .find |
+|   /home/new    |       GET |                     N/A |
+|     /home      |      POST |                 .create |
+|   /home/:id    |       GET |               .findById |
+| /home/:id/edit |       GET |               .findById |
+|   /home/:id    |       PUT |      .findByIdAndUpdate |
+|   /home/:id    |    DELETE |      .findByIdAndDelete |
