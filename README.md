@@ -8,7 +8,7 @@ A tool that addresses the majority of the needs of a photographer, hopefully ser
 
 ## Getting Started
 
-Link to webpage: `https://myphotographypage.herokuapp.com`
+Link to webpage: <https://myphotographypage.herokuapp.com>
 
 ## The end goal
 
