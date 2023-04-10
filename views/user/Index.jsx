@@ -5,7 +5,7 @@ const Layout = require("../components/Layout");
 const Text = require("../components/Text");
 class Index extends React.Component {
   render() {
-    const { Photo, loggedIn } = this.props;
+    const { photos, loggedIn } = this.props;
     return (
       <Layout loggedIn={loggedIn}>
         <div>
@@ -13,7 +13,7 @@ class Index extends React.Component {
             <Text>Picture portfolio Page</Text>
           </div>
           <section className=" flex basis-auto flex-wrap m-4 p-2 justify-center overscroll-auto ">
-            {this.props.photos.map((photo, i) => {
+            {photos.map((photo, i) => {
               return (
                 <div
                   className="rounded-lg shadow-md m-2 p-4 bg-gray-700"

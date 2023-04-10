@@ -1,2 +1,1 @@
-
-Copyright (C) 2023 Justin Stowe
+# Copyright (C) 2023 Justin Stowe
